@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Dashboard - SwiftPay</title>
+    <link rel="stylesheet" href="memdst.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="loo.jfif" alt="tech releif logo" class="logo">
+            <h1>PaySphee</h1>
+        </div>
+        <button class="btn logout-btn" id="logoutButton">Logout</button>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h2>Welcome, <span id="memberFullName"></span></h2>
+            <p>Student ID: <span id="studentId"></span></p>
+
+            <h3>Previously Paid Dues</h3>
+            <div class="records">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recordsTableBody">
+                        <!-- Records will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="btn pay-dues-btn" id="payDuesButton">Pay Dues</button>
+        </section>
+    </main>
+
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Payment Form</h3>
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label for="duesType">Select Dues</label>
+                    <select id="duesType">
+                        <option value="associationDues">Students' Representative Council</option>
+                        <option value="membershipFee">Ghana Muslim Students' Association</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Member Name</label>
+                    <div id="prefilledName"></div>
+                </div>
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <div id="prefilledId"></div>
+                </div>
+                <div class="form-group">
+                    <label for="mobileMoneyNumber">Mobile Money Number</label>
+                    <input type="text" id="mobileMoneyNumber" placeholder="Enter your mobile money number">
+                </div>
+                <button type="submit" class="btn primary-btn full-width">Initiate Payment</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        /*
+        // Check login status and populate member data
+        document.addEventListener('DOMContentLoaded', function() {
+            const memberData = JSON.parse(localStorage.getItem('memberData'));
+            if (!memberData) {
+                window.location.href = 'index.html'; // Redirect to login page
+                return;
+            }
+
+            // Populate member info
+            const memberNameEl = document.getElementById('memberFullName');
+            const studentIdEl = document.getElementById('studentId');
+            const prefilledNameEl = document.getElementById('prefilledName');
+            const prefilledIdEl = document.getElementById('prefilledId');
+            
+            memberNameEl.textContent = memberData.fullName;
+            studentIdEl.textContent = memberData.studentId;
+            prefilledNameEl.textContent = memberData.fullName;
+            prefilledIdEl.textContent = memberData.studentId;
+            
+            // TODO: Load payment records via API call
+            
+            // Modal functionality
+            const payDuesBtn = document.getElementById('payDuesButton');
+            const paymentModal = document.getElementById('paymentModal');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            // Show modal when Pay Dues button is clicked
+            payDuesBtn.addEventListener('click', function() {
+                paymentModal.style.display = 'block';
+            });
+            
+            // Close modal when close button is clicked
+            closeBtn.addEventListener('click', function() {
+                paymentModal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === paymentModal) {
+                    paymentModal.style.display = 'none';
+                }
+            });
+            
+            // Form submission
+            document.getElementById('paymentForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Handle payment submission
+                alert('Payment initiated!');
+                paymentModal.style.display = 'none';
+            });
+        });
+        */
+    </script>
+</body>
+
+</html>

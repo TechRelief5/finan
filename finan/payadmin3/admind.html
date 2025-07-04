@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SwiftPay</title>
+    <link rel="stylesheet" href="adminstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="loo.jfif" alt="tech releif logo" class="logo">
+            <h1>PaySphee</h1>
+        </div>
+        <button class="btn logout-btn" id="logoutButton">Logout</button>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h2>Welcome, <span id="adminFullName"></span></h2>
+            <p>Admin ID: <span id="adminId"></span></p>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('members-tab')">Members Accounts</button>
+                <button class="tab-btn" onclick="openTab('association-tab')">Association Members</button>
+                <button class="tab-btn" onclick="openTab('event-tab')">Event Planner</button>
+            </div>
+            
+            <div id="members-tab" class="tab-content active">
+                <table class="members-table">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Student ID</th>
+                            <th>Religion</th>
+                            <th>School</th>
+                            <th>Add to Association</th>
+                        </tr>
+                    </thead>
+                    <tbody id="membersTableBody">
+                        <!-- Members will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="association-tab" class="tab-content">
+                <table class="association-table">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Student ID</th>
+                            <th>Payment History</th>
+                            <th>Remove from Association</th>
+                        </tr>
+                    </thead>
+                    <tbody id="associationTableBody">
+                        <!-- Association members will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="event-tab" class="tab-content">
+                <form id="eventForm" class="event-form">
+                    <div class="form-group">
+                        <label for="eventName">Event Name</label>
+                        <input type="text" id="eventName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate">Date & Time</label>
+                        <input type="datetime-local" id="eventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventLocation">Location</label>
+                        <input type="text" id="eventLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDescription">Description</label>
+                        <textarea id="eventDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventImage">Event Image</label>
+                        <input type="file" id="eventImage" accept="image/*">
+                        <small>Max size 5MB</small>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Send Notification</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        /*
+        // Check login status and populate admin data
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminData = JSON.parse(localStorage.getItem('adminData'));
+            if (!adminData) {
+                window.location.href = 'index.html'; // Redirect to login page
+                return;
+            }
+
+            // Populate admin info
+            document.getElementById('adminFullName').textContent = adminData.fullName;
+            document.getElementById('adminId').textContent = adminData.studentId;
+
+            // Load members accounts and association members via API call
+            loadMembersAccounts();
+            loadAssociationMembers();
+
+            // Logout functionality
+            document.getElementById('logoutButton').addEventListener('click', function() {
+                localStorage.removeItem('adminData');
+                window.location.href = 'index.html';
+            });
+        });
+
+        function loadMembersAccounts() {
+            // Sample data for demonstration
+            const members = [
+                { fullName: 'Alice Johnson', studentId: '001', religion: 'Christianity', school: 'School A' },
+                { fullName: 'Bob Smith', studentId: '002', religion: 'Islam', school: 'School B' },
+                { fullName: 'Charlie Brown', studentId: '003', religion: 'Hinduism', school: 'School C' }
+            ];
+
+            const membersTableBody = document.getElementById('membersTableBody');
+            members.forEach(member => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${member.fullName}</td>
+                    <td>${member.studentId}</td>
+                    <td>${member.religion}</td>
+                    <td>${member.school}</td>
+                    <td><button class="btn add-btn" onclick="addToAssociation('${member.studentId}')">Add</button></td>
+                `;
+                membersTableBody.appendChild(row);
+            });
+        }
+
+        function loadAssociationMembers() {
+            // Sample data for demonstration
+            const associationMembers = [
+                { fullName: 'Alice Johnson', studentId: '001', paymentHistory: '$100' },
+                { fullName: 'Bob Smith', studentId: '002', paymentHistory: '$50' }
+            ];
+
+            const associationTableBody = document.getElementById('associationTableBody');
+            associationMembers.forEach(member => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${member.fullName}</td>
+                    <td>${member.studentId}</td>
+                    <td>${member.paymentHistory}</td>
+                    <td><button class="btn remove-btn" onclick="removeFromAssociation('${member.studentId}')">Remove</button></td>
+                `;
+                associationTableBody.appendChild(row);
+            });
+        }
+        */
+
+        function addToAssociation(studentId) {
+            // Logic to add member to association
+            alert(`Member with Student ID: ${studentId} added to the association.`);
+            // TODO: Update the association members list
+        }
+
+        function openTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show current tab and mark button as active
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function removeFromAssociation(studentId) {
+            // Logic to remove member from association
+            alert(`Member with Student ID: ${studentId} removed from the association.`);
+            // TODO: Update the association members list
+        }
+
+        // Event form submission
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const eventDetails = {
+                name: document.getElementById('eventName').value,
+                date: document.getElementById('eventDate').value,
+                location: document.getElementById('eventLocation').value,
+                description: document.getElementById('eventDescription').value,
+                image: eventImage ? eventImage.name : 'No image uploaded'
+            };
+            alert(`Event notification sent!\nEvent: ${eventDetails.name}\nDate: ${new Date(eventDetails.date).toLocaleString()}\nLocation: ${eventDetails.location}\nImage: ${eventDetails.image}`);
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>

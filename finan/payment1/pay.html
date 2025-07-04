@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaySphee Payment Solution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="loo.jfif" alt="tech-relief logo" class="logo">
+            <h1>PaySphee</h1>
+        </div>
+
+        <div class="auth-buttons">
+            <button class="btn login-btn" id="loginToggle">Login</button>
+            <div class="dropdown-menu" id="loginDropdown">
+                <a href="#" class="dropdown-item" id="adminLogin">Admin Login</a>
+                <a href="#" class="dropdown-item" id="memberLogin">Member Login</a>
+            </div>
+            <button class="btn signup-btn" id="signupToggle">Sign Up</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Secure. Fast. Simple.</h2>
+                <p>The modern payment solution for businesses and individuals</p>
+
+            </div>
+            <div class="hero-image">
+                <img src="big.png"
+                    alt="image" />
+            </div>
+        </section>
+
+        <section class="features">
+            <h3>Why Choose PaySphee?</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Bank-level Security</h4>
+                    <p>256-bit encryption protects all transactions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Instant Transfers</h4>
+                    <p>Send money anywhere in seconds</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4>Global Reach</h4>
+                    <p>Accept payments from anywhere in the world</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Smart Analytics</h4>
+                    <p>Track all your financial activity in one place</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stats-item">
+                <h5>80+</h5>
+                <p>Active Users</p>
+            </div>
+            <div class="stats-item">
+                <h5>¢3k+</h5>
+                <p>Processed</p>
+            </div>
+            <div class="stats-item">
+                <h5>99.9%</h5>
+                <p>Uptime</p>
+            </div>
+            <div class="stats-item">
+                <h5>15+</h5>
+                <p>Associations</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="modalTitle">Login</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" required id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox"> Remember me
+                        <span class="checkmark"></span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn primary-btn full-width">Login</button>
+            </form>
+            <p class="signup-link">Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+
+        </div>
+    </div>
+
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="signupTitle">Create Account</h3>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" required id="signupName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" required id="signupEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="SignupId">Student Id Number</label>
+                    <input type="email" required id="signupEmail" placeholder="Enter your id number">
+                </div>
+                <div class="form-group">
+                    <label for="SignupReligion">Religion</label>
+                    <input type="email" required id="signupEmail" placeholder="Enter your religion">
+                </div>
+                <div class="form-group">
+                    <label for="SignupSchool">School</label>
+                    <input type="email" required id="signupEmail" placeholder="Enter your School">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" required id="signupPassword" placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" required id="confirmPassword" placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="btn primary-btn full-width">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal elements
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const loginToggle = document.getElementById('loginToggle');
+        const loginDropdown = document.getElementById('loginDropdown');
+        const adminLogin = document.getElementById('adminLogin');
+        const memberLogin = document.getElementById('memberLogin');
+        const modalTitle = document.getElementById('modalTitle');
+        const closeBtns = document.querySelectorAll('.close-btn');
+        const signupToggle = document.getElementById('signupToggle');
+        const showSignup = document.getElementById('showSignup');
+        const showLogin = document.getElementById('showLogin');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+
+        // Toggle dropdown menu
+        loginToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            loginDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function () {
+            loginDropdown.classList.remove('show');
+        });
+
+        // Prevent dropdown from closing when clicking inside
+        loginDropdown.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+
+        // Admin login click handler
+        adminLogin.addEventListener('click', function (e) {
+            e.preventDefault();
+            loginDropdown.classList.remove('show');
+            modalTitle.textContent = "Admin Login";
+            loginModal.classList.add('show');
+        });
+
+        // Member login click handler
+        memberLogin.addEventListener('click', function (e) {
+            e.preventDefault();
+            loginDropdown.classList.remove('show');
+            modalTitle.textContent = "Member Login";
+            loginModal.classList.add('show');
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function (e) {
+            if (e.target.classList.contains('modal')) {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.classList.remove('show');
+                });
+            }
+        });
+
+        // Close modal
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                loginModal.classList.remove('show');
+                signupModal.classList.remove('show');
+            });
+        });
+
+        // Login form submission
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Login functionality would be implemented here');
+            loginModal.classList.remove('show');
+        });
+
+        // Signup form submission
+        signupForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Sign up functionality would be implemented here');
+            signupModal.classList.remove('show');
+        });
+
+        // Signup button handler
+        signupToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            loginDropdown.classList.remove('show');
+            loginModal.classList.remove('show');
+            signupModal.classList.add('show');
+        });
+
+        // Show signup from login modal
+        showSignup.addEventListener('click', function (e) {
+            e.preventDefault();
+            loginModal.classList.remove('show');
+            signupModal.classList.add('show');
+        });
+
+        // Show login from signup modal
+        showLogin.addEventListener('click', function (e) {
+            e.preventDefault();
+            signupModal.classList.remove('show');
+            loginModal.classList.add('show');
+            loginDropdown.classList.remove('show');
+        });
+
+    </script>
+</body>
+
+</html>
