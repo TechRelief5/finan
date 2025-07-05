@@ -66,13 +66,20 @@
                 </div>
                 <div class="form-group">
                     <label for="mobileMoneyNumber">Mobile Money Number</label>
-                    <input type="text" id="mobileMoneyNumber" placeholder="Enter your mobile money number">
+                    <input type="text" id="mobileMoneyNumber" placeholder="Enter your mobile money number" required>
                 </div>
                 <button type="submit" class="btn primary-btn full-width">Initiate Payment</button>
             </form>
         </div>
     </div>
 
+    <div class="modal" id="receiptModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeReceipt()">&times;</span>
+            <h3>Payment Receipt</h3>
+            <p id="receiptDetails"></p>
+        </div>
+    </div>
 
     <script>
         /*
@@ -118,15 +125,35 @@
                     paymentModal.style.display = 'none';
                 }
             });
+            // Logout functionality
+            document.getElementById('logoutButton').addEventListener('click', function() {
+                localStorage.removeItem('memberData'); // Clear member data
+                window.location.href = 'index.html'; // Redirect to login page
+            });
             
             // Form submission
             document.getElementById('paymentForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                // TODO: Handle payment submission
-                alert('Payment initiated!');
+                const duesType = document.getElementById('duesType').value;
+                const mobileMoneyNumber = document.getElementById('mobileMoneyNumber').value;
+                const paymentDate = new Date().toLocaleString();
+                const receiptDetails = `
+                    <strong>Payment Receipt</strong><br>
+                    Name: ${memberData.fullName}<br>
+                    Student ID: ${memberData.studentId}<br>
+                    Dues Type: ${duesType}<br>
+                    Mobile Money Number: ${mobileMoneyNumber}<br>
+                    Date: ${paymentDate}
+                `;
+                document.getElementById('receiptDetails').innerHTML = receiptDetails;
                 paymentModal.style.display = 'none';
+                document.getElementById('receiptModal').style.display = 'block';
             });
         });
+
+        function closeReceipt() {
+            document.getElementById('receiptModal').style.display = 'none';
+        }
         */
     </script>
 </body>
